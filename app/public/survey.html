@@ -316,26 +316,12 @@
                 };
                 //console.log(person);
 
-                $.post("/api/friends", person, function () {
-                    $("#name").val("");
-                    $("#photo").val("");
-                    $("#sel1").val("");
-                    $("#sel2").val("");
-                    $("#sel3").val("");
-                    $("#sel4").val("");
-                    $("#sel5").val("");
-                    $("#sel6").val("");
-                    $("#sel7").val("");
-                    $("#sel8").val("");
-                    $("#sel9").val("");
-                    $("#sel10").val("");
 
-                });
 
                 $.get("api/friends", function (data) {
 
                     //console.log(data);
-                    for (let i = 0; i < data.length - 1; i++) {
+                    for (let i = 0; i < data.length; i++) {
                         var s = 0;
                         {
                             for (let j = 0; j < data[i].scores.length; j++) { s += Math.abs(parseInt(person.scores[j]) - parseInt(data[i].scores[j])); }
@@ -353,6 +339,26 @@
                     $(".modal-body").append("<img src='" + data[min].photo + "'>");
 
                     $("#myModal").modal("show");
+
+
+                }).then(function () {
+                    $.post("/api/friends", person, function () {
+                        $("#name").val("");
+                        $("#photo").val("");
+                        $("#sel1").val("");
+                        $("#sel2").val("");
+                        $("#sel3").val("");
+                        $("#sel4").val("");
+                        $("#sel5").val("");
+                        $("#sel6").val("");
+                        $("#sel7").val("");
+                        $("#sel8").val("");
+                        $("#sel9").val("");
+                        $("#sel10").val("");
+
+                    });
+
+
 
 
                 });
